@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRONO.HERITAGE // Catalog Manager</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="logo">CHRONO<span>.HERITAGE</span></div>
+        <nav class="nav-links">
+            <a href="#katalog">Katalog</a>
+            <a href="#kelola">Kelola Jam Tangan</a>
+        </nav>
+        <button class="btn-gold" id="btn-open-modal">
+            <i class="fa-solid fa-plus"></i> Tambah Koleksi
+        </button>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        
+        <!-- Section: Hero & Stats -->
+        <section class="hero-mini">
+            <span class="tagline">TIMELESS ELEGANCE & UNCOMPROMISED HERITAGE</span>
+            <h1>CATALOG MANAGEMENT <span>SYSTEM</span></h1>
+            <p>Kelola koleksi jam tangan mewah CHRONO.HERITAGE secara realtime.</p>
+        </section>
+
+        <!-- Section: Search & Filter -->
+        <section class="toolbar-section">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Cari berdasarkan nama atau seri jam...">
+            </div>
+            <div class="filter-box">
+                <select id="filter-category">
+                    <option value="all">Semua Kategori</option>
+                    <option value="Tourbillon">Tourbillon</option>
+                    <option value="Chronograph">Chronograph</option>
+                    <option value="Classic">Classic</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Section: Display Grid (Read) -->
+        <section id="katalog" class="catalog-section">
+            <h2 class="section-title">Koleksi Terdaftar</h2>
+            <div class="watch-grid" id="watch-list">
+                <!-- Cards will be populated by JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Form (Create & Update) -->
+    <div class="modal-overlay" id="watch-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-title">Tambah Koleksi Jam Tangan</h3>
+                <button class="btn-close" id="btn-close-modal">&times;</button>
+            </div>
+            <form id="watch-form">
+                <input type="hidden" id="watch-id">
+                
+                <div class="form-group">
+                    <label for="watch-title">Nama / Seri Jam</label>
+                    <input type="text" id="watch-title" placeholder="Contoh: CHRONO.H Imperial Tourbillon" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="watch-category">Kategori</label>
+                    <select id="watch-category" required>
+                        <option value="Tourbillon">Tourbillon</option>
+                        <option value="Chronograph">Chronograph</option>
+                        <option value="Classic">Classic</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="watch-price">Harga (USD / Keterangan)</label>
+                    <input type="text" id="watch-price" placeholder="Contoh: $190,000 atau Price Upon Request" required>
+                </div>
+
+                <!-- Tombol Upload File Manager -->
+                <div class="form-group">
+                    <label for="watch-image-file">Upload Gambar Jam</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="watch-image-file" accept="image/*" class="file-input">
+                        <label for="watch-image-file" class="btn-upload">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> Pilih Gambar dari File Manager
+                        </label>
+                    </div>
+                    <!-- Area Preview Gambar -->
+                    <div class="img-preview-box" id="img-preview-box" style="display: none; margin-top: 10px;">
+                        <img id="img-preview" src="" alt="Preview Gambar" style="width: 100%; max-height: 150px; object-fit: cover; border-radius: 6px; border: 1px solid var(--gold-accent);">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="watch-desc">Deskripsi Singkat</label>
+                    <textarea id="watch-desc" rows="3" placeholder="Jelaskan keunggulan material dan spesifikasi..." required></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" id="btn-cancel">Batal</button>
+                    <button type="submit" class="btn-gold">Simpan Koleksi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
